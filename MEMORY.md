@@ -137,3 +137,36 @@ guardadas en `.env`, gitignored) -- **pendientes de fondear** via
 login, pegar el EVM address). Sin esto no se puede correr el demo en
 vivo ni obtener el tx real de settlement que pide el criterio de
 evidencia del proyecto -- el codigo esta listo pero no ejecutado.
+
+## 2026-09-11 -- Cuentas fondeadas y finalizadas en testnet, con evidencia real
+
+Ambas cuentas confirmadas fondeadas contra el mirror node en vivo (no
+solo por el reporte del usuario): cliente `0.0.10487296` y facilitador
+`0.0.10487303`, 10 HBAR cada una. Ambas eran realmente hollow (`key:
+null` confirmado via curl directo a la API, no via el resumen de un
+fetch generico -- ese primer intento dijo incorrectamente "no son
+hollow").
+
+Corridas reales en Hedera testnet, todas `SUCCESS`, verificadas contra
+el mirror node:
+- Finalizacion cliente + asociacion USDC (`0.0.429274`) + allowance de
+  5 USDC al proxy `0.0.9556979`: tx ids
+  `0.0.10487296-1789168496-646625928` (TOKENASSOCIATE),
+  `0.0.10487296-1789168497-252447275` (CRYPTOAPPROVEALLOWANCE).
+- Finalizacion facilitador: tx `0.0.10487303@1789168517.577872583`.
+
+Nota tecnica real encontrada al correr esto (no solo teoria): el
+primer intento de finalizar la cuenta uso el account id en forma alias
+(`AccountId.fromEvmAddress`) como payer y fallo en precheck con
+`PAYER_ACCOUNT_NOT_FOUND`, aunque la cuenta ya existia y resolvia bien
+por queries de mirror node. Se corrigio usando el account id real
+(`0.0.x`, ya conocido por el mirror node) directamente como operador --
+documentado en `scripts/setup-upto-client.ts` para no repetir el error.
+
+**Pendiente inmediato:** el cliente tiene 0 USDC de testnet -- la
+allowance esta aprobada pero no hay saldo que mover. Se necesita
+mintear USDC de prueba a `0.0.10487296` desde
+`https://faucet.circle.com/` (red "Hedera Testnet", publico, sin
+login, pero es un formulario de navegador -- accion humana pendiente)
+antes de poder correr el demo completo y obtener el tx real del
+`capture()`.
