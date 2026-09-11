@@ -40,3 +40,8 @@
   verify -> settle documentado en la spec local del esquema `exact`)
   como punto de partida, no como producto terminado -- falta decidir
   que se cobra de verdad.
+- Se instalo el setup de Claude Code + Antigravity (patron ya probado
+  en otros workspaces hermanos): skill `claude-antigravity-setup`,
+  comando `/session-close`, y los playbooks `continue.md`, `images.md`,
+  `git.md`, `drive.md` -- sus reglas cortas ya viven al final de
+  `AGENTS.md`.

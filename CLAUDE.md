@@ -31,6 +31,9 @@ Reglas duras del proyecto: ver `AGENTS.md` (importado arriba).
 | [`tecnico/`](./tecnico/) | Referencia tecnica: SDK, endpoints de red, reglas de marca |
 | [`legal/`](./legal/) | Jurisdiccion y consideraciones legales (placeholder, sin confirmar todavia) |
 | [`src/`](./src/) | Codigo del servicio x402-gated |
+| [`playbooks/`](./playbooks/) | Reglas de trabajo reusables (resume de sesion, imagenes, git/PRs, Google Drive) referenciadas desde `AGENTS.md` |
+| `.claude/skills/claude-antigravity-setup/SKILL.md` | Como configurar Claude Code + Antigravity en cualquier proyecto nuevo, este o cualquier otro |
+| `.claude/commands/session-close.md` | `/session-close` -- auditoria de cierre de sesion, archivo por archivo |
 
 ## Herramientas propias vs. de terceros
 
