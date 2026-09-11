@@ -32,6 +32,7 @@ const PAY_TO = process.env.HEDERA_PAYTO_ACCOUNT_ID;
 const ASSET = process.env.UPTO_ASSET_ID ?? "0.0.429274"; // Hedera testnet USDC, per @x402/hedera README
 const ASSET_DECIMALS = Number(process.env.UPTO_ASSET_DECIMALS ?? 6);
 const PROXY_CONTRACT_ID = process.env.UPTO_PROXY_CONTRACT_ID ?? "0.0.9556979"; // Madhav Gupta's live reference deployment, reused -- see investigacion/upto-scheme-evaluacion.md on why this is safe to reuse (permissionless proxy)
+const PROXY_EVM_ADDRESS = process.env.UPTO_PROXY_EVM ?? "0x000000000000000000000000000000000091d3f3"; // confirmed against the testnet mirror node for 0.0.9556979
 const FACILITATOR_URL = process.env.UPTO_FACILITATOR_URL ?? "http://localhost:3404";
 const MAX_CEILING_ATOMIC = process.env.UPTO_MAX_CEILING_ATOMIC ?? "500000"; // 0.5 USDC ceiling, atomic units (6 decimals)
 
@@ -78,6 +79,8 @@ function paymentRequired(resourceUrl: string) {
         extra: {
           feePayer: process.env.UPTO_FACILITATOR_ACCOUNT_ID ?? "0.0.UNSET",
           facilitatorEvm: process.env.UPTO_FACILITATOR_EVM ?? "0xUNSET",
+          proxy: PROXY_EVM_ADDRESS,
+          verifyingContract: PROXY_EVM_ADDRESS,
           proxyContractId: PROXY_CONTRACT_ID,
           chainId: NETWORK === "hedera:mainnet" ? 295 : 296,
           domainName: "x402-upto-hedera",

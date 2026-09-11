@@ -170,3 +170,23 @@ mintear USDC de prueba a `0.0.10487296` desde
 login, pero es un formulario de navegador -- accion humana pendiente)
 antes de poder correr el demo completo y obtener el tx real del
 `capture()`.
+
+## 2026-09-11 -- Demo end-to-end real completada, tx verificado
+
+USDC de testnet confirmado en `0.0.10487296` (20 USDC, verificado
+contra el mirror node antes de correr nada). Corrida completa real:
+facilitador + resource server + cliente, contra Hedera testnet real.
+**Settlement real logrado:**
+`0.0.10487303@1789169205.952602378` -- 16 unidades de USDC testnet
+movidas del cliente al merchant via el proxy `X402UptoProxy`
+(`0.0.9556979`), monto determinado por trabajo real medido (16
+palabras procesadas), no un numero fijo. Verificado independientemente
+contra el mirror node (no solo el output del propio script): una
+CONTRACTCALL real al proxy + el CRYPTOTRANSFER que dispara, ambos
+`SUCCESS`. Detalle completo, incluyendo 4 problemas tecnicos reales
+encontrados y resueltos en el camino (uno de ellos una incompatibilidad
+de versiones no documentada en ningun lado, entre
+`x402-hedera-upto@0.1.0` y `@x402/core >=2.22.0`), en
+[`investigacion/demo-upto-live.md`](./investigacion/demo-upto-live.md).
+
+Link verificable: https://hashscan.io/testnet/transaction/0.0.10487303@1789169205.952602378
