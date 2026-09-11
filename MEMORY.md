@@ -44,4 +44,41 @@
   en otros workspaces hermanos): skill `claude-antigravity-setup`,
   comando `/session-close`, y los playbooks `continue.md`, `images.md`,
   `git.md`, `drive.md` -- sus reglas cortas ya viven al final de
-  `AGENTS.md`.
+  `AGENTS.md`. Confirmado despues (misma sesion, turno siguiente): el
+  skill y el comando ya aparecen activos en el listado de herramientas
+  -- no hizo falta reiniciar sesion.
+
+## 2026-09-11 -- Gaps tecnicos y estado de funding en Hedera
+
+Investigacion completa en
+[`investigacion/gaps-y-funding.md`](./investigacion/gaps-y-funding.md),
+metodo: auditoria de codigo/issues real via `gh api` (no documentacion),
+mas verificacion en vivo de cada programa de funding. Resumen:
+
+- 6 gaps tecnicos reales encontrados en `@x402/hedera` / esquema
+  `exact`, todos con issue/PR real citado: sin esquema `upto` (pago
+  medido), sin pagos con allowance/approved-transfer, politica de
+  auto-creacion de cuenta por alias opcional en la spec, metodo
+  `transferExecutor` en progreso (bloqueado, ya con dueño), facilitador
+  no verifica credito neto real con tokens HTS de custom fees (bug de
+  seguridad real, sin asignar), y el propio mantenedor reconoce en el
+  CHANGELOG que verify/settle no tiene paridad completa (custom
+  fees/KYC/expiry fuera de alcance).
+- Correccion importante a un dato que traia la sesion hermana: el
+  Hello Future Hackathon ($550K, trilogia Origins/Ascension/Apex) **ya
+  esta completamente cerrado** -- Apex corrio 17-feb al 23-mar-2026,
+  ganadores anunciados 12-may-2026. La cifra de "$550K, arrancaba
+  julio" describia el lanzamiento original, no el estado actual.
+- Hedera Foundation (`hedera.com/grants` redirige ahi) es rolling sin
+  montos publicados en la fuente primaria -- la cifra de "$250K/$500K/
+  $1.5M" que aparecio en un resumen de busqueda no se pudo confirmar
+  contra la pagina oficial, tratada como no confirmada.
+- **Unico canal de funding confirmado como abierto ahora mismo:** The
+  Hashgraph Association (`hashgraph.swiss/funding`, entidad separada),
+  proceso de 6-8 semanas con due diligence, decisiones de board
+  trimestrales -- no es un bounty rapido.
+- Conclusion: no hay cruce limpio "gap + bounty abierto ya". El camino
+  con evidencia clickeable mas realista es contribuir directo al repo
+  upstream (PR #3061 sin asignar es el candidato mas directo a
+  replicar el patron de auditoria ya usado en Kumply/Nirium), no
+  esperar una ronda de grant.
