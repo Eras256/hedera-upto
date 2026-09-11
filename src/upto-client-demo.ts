@@ -32,13 +32,14 @@ async function main() {
     PrivateKey.fromStringECDSA(CLIENT_PRIVATE_KEY!),
     { network: NETWORK },
   );
-  // Note: @x402/core is pinned to 2.21.0 in this project (see
-  // package.json comment / MEMORY.md) because x402-hedera-upto@0.1.0
-  // (the only version published) predates core's 2.22.0 breaking change
-  // requiring every SchemeNetworkServer to declare `paymentFlows` --
-  // UptoHederaScheme doesn't, so it throws against core >=2.22.0. At
-  // 2.21.0 there is no spendControls feature yet either (added in
-  // 2.23.0), so no setSpendControls(false) call is needed or available.
+  // Note: this project pins @x402/core to 2.21.0 (see package.json) --
+  // x402-hedera-upto@0.1.0 (the only version published) is incompatible
+  // with @x402/core >=2.22.0 (missing `paymentFlows`/
+  // `defaultAssetTransferMethod`, required since that version). Fix
+  // proposed and verified upstream -- see MEMORY.md and the linked PR
+  // against Madhav-Gupta-28/Tally. At 2.21.0 there is no spendControls
+  // feature yet (added in 2.23.0), so no setSpendControls(false) call
+  // is needed or available.
   const client = new x402Client().register("hedera:*", new UptoHederaScheme(signer));
   const http = new x402HTTPClient(client);
 

@@ -190,3 +190,41 @@ de versiones no documentada en ningun lado, entre
 [`investigacion/demo-upto-live.md`](./investigacion/demo-upto-live.md).
 
 Link verificable: https://hashscan.io/testnet/transaction/0.0.10487303@1789169205.952602378
+
+## 2026-09-11 -- Comentario en #2919 publicado; fix real reportado upstream con PR
+
+Comentario de confirmacion de la evaluacion de #2919 publicado y
+verificado en vivo (aprobacion directa del usuario en este canal, no
+via relay de otra sesion): [x402-foundation/x402#2919 (comment)](https://github.com/x402-foundation/x402/pull/2919#issuecomment-5641834500)
+(id `5641834500`, autor `Eras256`).
+
+El bug de incompatibilidad `x402-hedera-upto`/`@x402/core` (ver entrada
+anterior) se reporto upstream, no solo en este proyecto. Repo real
+encontrado via el campo `repository` del package.json publicado:
+`github.com/Madhav-Gupta-28/Tally` (no `x402-foundation/x402`, ese es
+el monorepo del estandar). Causa raiz confirmada de forma precisa:
+`@x402/core@2.22.0` (PR x402-foundation/x402#3053, commit `db5da2e`)
+volvio obligatorio `paymentFlows`/`defaultAssetTransferMethod` en todo
+`SchemeNetworkServer`; `UptoHederaScheme` (server) nunca los declaro.
+
+**Fix validado dos veces con ejecucion real antes de proponerlo**, no
+solo por analogia con el esquema `exact`: parche local aplicado,
+`@x402/core` reinstalado a 2.25.0 (la actual), demo completo corrido
+de nuevo -- segundo settlement real logrado:
+`0.0.10487303@1789169750.717664586`, verificado contra el mirror node
+(`CONTRACTCALL` + `CRYPTOTRANSFER`, ambos `SUCCESS`, monto exacto 12 =
+palabras reales procesadas).
+
+**PR real abierto y verificado en vivo:**
+[Madhav-Gupta-28/Tally#1](https://github.com/Madhav-Gupta-28/Tally/pull/1)
+(fork `Eras256/Tally`, rama `fix/upto-server-payment-flows`, 14
+lineas, 1 archivo, coautoria de IA incluida en el commit y el PR).
+Aprobado explicitamente por el usuario en este canal antes de
+publicarse, con texto exacto revisado primero -- no a partir de un
+relay de otra sesion.
+
+Estado final del proyecto propio (revertido despues de validar):
+`@x402/core` queda fijo en `2.21.0` en `package.json` (version estable
+compatible con `x402-hedera-upto@0.1.0` sin parches), documentado como
+temporal hasta que el fix real se publique en una version nueva del
+paquete.

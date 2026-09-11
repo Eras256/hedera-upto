@@ -83,6 +83,21 @@ hecho, exactamente el punto del esquema `upto`.
    No hizo falta usarla: a esa version no hay spend controls que
    rechacen el asset.
 
+## Fix real, propuesto y validado dos veces
+
+El problema #3 de arriba (incompatibilidad `x402-hedera-upto`/`@x402/core`)
+se reporto upstream con PR real, no solo documentado aqui:
+[Madhav-Gupta-28/Tally#1](https://github.com/Madhav-Gupta-28/Tally/pull/1).
+
+Antes de proponerlo se valido el fix con una segunda corrida real
+completa (no solo razonamiento por analogia con `@x402/hedera`): se
+parcheo localmente `node_modules/x402-hedera-upto/dist/upto/server/scheme.js`
+agregando `defaultAssetTransferMethod`/`paymentFlows`, se reinstalo
+`@x402/core@2.25.0` (la version actual, la que rompia antes del
+parche), y se corrio el demo completo de nuevo -- exito, con un
+segundo settlement real: `0.0.10487303@1789169750.717664586`
+(verificado contra el mirror node igual que el primero).
+
 ## Nota de duplicacion de dependencia
 
 Fijar `@x402/core` a `2.21.0` en el nivel raiz deja una segunda copia
