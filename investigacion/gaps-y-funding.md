@@ -77,9 +77,20 @@ abiertos al 2026-09-11 salvo que se indique lo contrario.
   reporta exito igual.
 - **Esto es un bug de correccion/seguridad real, no solo una feature
   faltante** -- mismo tipo de hallazgo que ya se hizo en Kumply/Nirium
-  (auditar codigo real, confirmar con evidencia, proponer el fix). Sin
-  asignar, candidato directo a investigar y arreglar si se quiere
-  replicar ese patron aqui.
+  (auditar codigo real, confirmar con evidencia, proponer el fix).
+- **Reproducido y confirmado en vivo el 2026-09-11** contra el paquete
+  publicado real `@x402/hedera@2.25.0` (no solo leyendo el PR):
+  `verify()` acepta la transferencia nominal de un token HTS
+  hipotetico con fee fraccional del 10% pagado por el receptor, y
+  `settle()` reporta `success: true` sin verificar el credito neto
+  real -- confirmado por ejecucion real de codigo, con el signer real
+  actual (solo espera `getReceipt()`, nunca `getRecord()`, confirmado
+  por grep contra el `dist/` instalado). El fix del PR #3061 (autor
+  real: **SashaMIT**, no "sin dueño" -- solo sin auto-asignar) se leyo
+  completo y es correcto. Comentario de confirmacion publicado en el
+  PR: [x402-foundation/x402#3061 (comment)](https://github.com/x402-foundation/x402/pull/3061#issuecomment-5641399141),
+  verificado en vivo contra la API de GitHub (autor `Eras256`, id
+  `5641399141`).
 
 ### 1.6 Gap reconocido por el propio mantenedor -- verify/settle no tiene paridad completa
 Del CHANGELOG real del paquete (`typescript/packages/mechanisms/hedera/CHANGELOG.md`,

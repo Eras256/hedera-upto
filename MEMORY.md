@@ -82,3 +82,21 @@ mas verificacion en vivo de cada programa de funding. Resumen:
   upstream (PR #3061 sin asignar es el candidato mas directo a
   replicar el patron de auditoria ya usado en Kumply/Nirium), no
   esperar una ronda de grant.
+
+## 2026-09-11 -- PR #3061 reproducido, confirmado y comentado en vivo
+
+Siguiendo el mismo proceso de Kumply/Nirium: se reprodujo el bug de
+forma aislada primero (script real contra el paquete publicado
+`@x402/hedera@2.25.0`, no un mock inventado ni una suposicion desde la
+descripcion del PR), confirmando que `verify()` + `settle()` reportan
+exito sin verificar el credito neto real cuando un token HTS tiene fee
+fraccional pagado por el receptor. Se leyo el diff completo del fix
+real del PR #3061 (autor: SashaMIT) y se confirmo que es correcto.
+
+El usuario verifico independientemente las partes checkeables
+(descargo el paquete el mismo, reviso el diff el mismo) antes de dar
+luz verde a publicar. Comentario real publicado y verificado en vivo
+contra la API de GitHub: [x402-foundation/x402#3061 (comment)](https://github.com/x402-foundation/x402/pull/3061#issuecomment-5641399141)
+(id `5641399141`, autor `Eras256`, 2026-09-11T22:34:24Z). Detalle
+tecnico completo en
+[`investigacion/gaps-y-funding.md`](./investigacion/gaps-y-funding.md).
