@@ -7,12 +7,17 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "dev:upto-server": "tsx watch src/upto-server.ts",
+    "dev:upto-facilitator": "tsx watch src/upto-facilitator.ts",
+    "demo:upto-client": "tsx src/upto-client-demo.ts",
+    "setup:upto-client": "tsx scripts/setup-upto-client.ts"
   },
   "dependencies": {
     "@x402/core": "latest",
     "@x402/hedera": "^2.25.0",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "x402-hedera-upto": "^0.1.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",

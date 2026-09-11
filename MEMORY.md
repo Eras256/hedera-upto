@@ -100,3 +100,40 @@ contra la API de GitHub: [x402-foundation/x402#3061 (comment)](https://github.co
 (id `5641399141`, autor `Eras256`, 2026-09-11T22:34:24Z). Detalle
 tecnico completo en
 [`investigacion/gaps-y-funding.md`](./investigacion/gaps-y-funding.md).
+
+## 2026-09-11 -- Decision: esquema upto como entregable principal + scaffold real
+
+Decidido (sesion RFP-1): el esquema `upto` (pago medido/variable) es el
+entregable principal, no `exact`. Evaluado PR #2919 con el mismo nivel
+de diligencia que #3061 -- ver
+[`investigacion/upto-scheme-evaluacion.md`](./investigacion/upto-scheme-evaluacion.md).
+Veredicto: vale la pena retomarlo (no reimplementar), esta estancado
+por falta de revision + un gate de Vercel sin relacion con el codigo,
+no por firma de commits como se penso al inicio.
+
+Comentario de confirmacion redactado para el PR/issue, **pendiente de
+publicar**: una sesion hermana relayo que el usuario ya habia aprobado
+sin ver el texto, pero eso no se acepto como aprobacion valida -- se le
+pregunto directamente al usuario en este mismo canal si podia
+publicarse, porque ya se le habia hecho esa misma pregunta
+directamente antes. No es lo mismo que lo ya vivido con #3061, donde el
+usuario si respondio el mismo, en este canal.
+
+Construido el scaffold completo de la Parte 2 (servicio real cobrando
+por uso medido), verificado linea por linea contra las APIs reales
+instaladas (`x402-hedera-upto@0.1.0`, `@x402/core@2.25.0`) -- no
+fabricado:
+- `src/upto-server.ts` -- resource server con endpoint de digest de
+  palabras, cobra por palabra procesada.
+- `src/upto-facilitator.ts` -- facilitador standalone, wire protocol
+  confirmado contra el codigo real de `HTTPFacilitatorClient`.
+- `src/upto-client-demo.ts` -- cliente real end-to-end.
+- `scripts/setup-upto-client.ts` -- finaliza cuenta hollow, asocia
+  asset, aprueba allowance al proxy ya desplegado (0.0.9556979).
+
+Generadas dos keypairs ECDSA testnet nuevas (cliente + facilitador,
+guardadas en `.env`, gitignored) -- **pendientes de fondear** via
+`https://portal.hedera.com/faucet` (accion humana de 30 segundos, sin
+login, pegar el EVM address). Sin esto no se puede correr el demo en
+vivo ni obtener el tx real de settlement que pide el criterio de
+evidencia del proyecto -- el codigo esta listo pero no ejecutado.

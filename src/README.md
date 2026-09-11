@@ -1,5 +1,42 @@
 # src/ -- codigo del servicio
 
+## Entregable principal (decision 2026-09-11): el esquema `upto`
+
+Tras evaluar gaps reales en el ecosistema (ver
+`../investigacion/gaps-y-funding.md`), el entregable principal pasa a
+ser el esquema `upto` (pago medido/variable) en vez de `exact` --
+infraestructura que falta, no un producto de nicho. Detalle de la
+decision y de la evaluacion del PR #2919 (upto para Hedera, ya
+existente pero sin mergear) en `../investigacion/upto-scheme-evaluacion.md`.
+
+**Archivos de la Parte 2 (esquema `upto`):**
+
+- `upto-server.ts` -- resource server real: expone `POST /api/digest`,
+  un endpoint de trabajo medido genuino (digest de frecuencia de
+  palabras) que cobra por palabra procesada, no un precio fijo. Usa
+  `x402-hedera-upto` (paquete real publicado, v0.1.0) y el proxy ya
+  desplegado por Madhav Gupta (`0.0.9556979`, ver evaluacion del PR).
+- `upto-facilitator.ts` -- facilitador standalone (README del paquete:
+  "no public Hedera facilitator supports upto today, so you must run
+  your own"). Expone `/verify` y `/settle` con el wire protocol real de
+  `@x402/core` (confirmado leyendo el codigo instalado, no asumido).
+- `upto-client-demo.ts` -- cliente real: pide el recurso, recibe 402,
+  firma una autorizacion EIP-712 off-chain (sin transaccion, sin gas),
+  reintenta, y muestra el tx real de settlement.
+- `../scripts/setup-upto-client.ts` -- setup de una sola vez para la
+  cuenta cliente: finaliza la cuenta hollow, asocia el asset, aprueba
+  el allowance al proxy.
+
+**Estado real al 2026-09-11: codigo completo y verificado contra las
+APIs reales instaladas (no fabricado), pero SIN ejecutar en vivo
+todavia** -- faltan las dos cuentas de testnet fondeadas (cliente y
+facilitador). Las keys ya se generaron localmente (`.env`, gitignored)
+y sus EVM addresses estan pendientes de fondear via
+`https://portal.hedera.com/faucet` (pegar el address, sin login, 100
+HBAR de testnet). Una vez fondeadas: `npm run setup:upto-client`,
+despues `npm run dev:upto-facilitator` + `npm run dev:upto-server` en
+paralelo, despues `npm run demo:upto-client` para la corrida real.
+
 Scaffold, no producto terminado. `server.ts` levanta un resource server
 Express que registra el esquema "exact" de `@x402/hedera` para
 `hedera:*`, pero el `facilitatorClient` es un placeholder (ver TODO en
