@@ -4,9 +4,6 @@
   Hedera para x402, el paquete oficial, el facilitador de referencia, y
   el estado (cerrado) del programa de bounties. Punto de partida
   tecnico para el build.
-- [`ambassador-program.md`](./ambassador-program.md) -- el programa de
-  embajadores de Hedera: tracks, link al formulario, y por que el
-  track Developer se alinea con el build de este proyecto.
 - [`gaps-y-funding.md`](./gaps-y-funding.md) -- 6 gaps tecnicos reales
   en `@x402/hedera` (auditados via `gh api`, no desde documentacion) y
   el estado en vivo de cada programa de funding de Hedera -- incluye

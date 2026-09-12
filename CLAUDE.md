@@ -12,8 +12,7 @@ de un servicio x402-gated en Hedera (patron verify -> settle, el mismo
 que Giovanny ya tiene en produccion en Base y Stellar). Dos objetivos en
 paralelo, sin que uno bloquee al otro:
 
-1. **Aplicacion al Hedera Ambassador Program** (formulario en
-   `investigacion/ambassador-program.md`).
+1. **Aplicacion al Hedera Ambassador Program.**
 2. **Build real:** un servicio pagado por x402 corriendo en Hedera
    testnet, usando el esquema "exact" que Hedera ya contribuyo al
    estandar x402 -- ver `investigacion/x402-on-hedera.md`.

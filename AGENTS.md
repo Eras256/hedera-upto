@@ -50,7 +50,7 @@ construir un servicio real x402-gated en testnet/mainnet de Hedera.
   resto del portafolio, **no confirmada para este proyecto
   especificamente todavia.** Cualquier analisis legal/fiscal real debe
   confirmar la jurisdiccion con el usuario antes de tratarse como
-  aplicable. Ver `legal/README.md`.
+  aplicable.
 - **Nunca "SDK" ni "Developer" en el nombre/titulo publico del
   proyecto** si en algun momento esto aplica a un programa de grants
   con categorias -- mismo error que ya costo un proyecto hermano en
