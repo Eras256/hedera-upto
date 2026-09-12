@@ -10,3 +10,9 @@ Thumbs.db
 # contexto operativo interno). Sigue existiendo en disco, solo no se
 # trackea en este repo.
 MEMORY.md
+
+# Investigacion interna y notas legales -- utiles localmente, pero
+# mencionan contexto de portafolio/estrategia que no va a un repo
+# publico. Igual que MEMORY.md: existen en disco, nunca se trackean.
+investigacion/
+legal/
