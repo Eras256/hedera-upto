@@ -24,6 +24,7 @@ import express from "express";
 import { x402ResourceServer } from "@x402/core/server";
 import { HTTPFacilitatorClient, decodePaymentSignatureHeader } from "@x402/core/http";
 import { UptoHederaScheme } from "x402-hedera-upto/upto/server";
+import { digest } from "./digest.js";
 
 const PORT = Number(process.env.UPTO_PORT ?? 3403);
 const NETWORK = process.env.HEDERA_NETWORK ?? "hedera:testnet";
@@ -90,19 +91,10 @@ function paymentRequired(resourceUrl: string) {
   };
 }
 
-/**
- * The metered "work": a word-frequency digest. Real, deterministic,
- * variable-cost -- the price (1 atomic unit per word processed) is only
- * knowable after parsing the input, which is exactly what makes `upto`
- * the right scheme here instead of `exact`.
- */
-function digest(text: string): { wordCount: number; topWords: [string, number][] } {
-  const words = text.toLowerCase().match(/[a-z0-9']+/g) ?? [];
-  const freq = new Map<string, number>();
-  for (const w of words) freq.set(w, (freq.get(w) ?? 0) + 1);
-  const topWords = [...freq.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
-  return { wordCount: words.length, topWords };
-}
+// The metered "work" (word-frequency digest) lives in ./digest.ts --
+// pure, no Express/env dependencies, real-testable. Price (1 atomic
+// unit per word) is only knowable after parsing the input, which is
+// exactly what makes `upto` the right scheme here instead of `exact`.
 
 app.post("/api/digest", async (req, res) => {
   const resourceUrl = `${req.protocol}://${req.get("host")}${req.originalUrl}`;

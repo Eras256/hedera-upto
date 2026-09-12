@@ -1,6 +1,15 @@
 // Scaffold inicial -- NO es el producto final. Falta decidir el
 // estado y las decisiones pendientes (que servicio concreto se cobra).
 //
+// Excluido de tsconfig.json/CI: @x402/hedera trae su propio
+// @x402/core@2.25.0 anidado, distinto del @x402/core@2.21.0 fijado en
+// la raiz para compatibilidad con x402-hedera-upto (ver
+// package.json) -- dos instalaciones de @x402/core producen tipos
+// SchemeNetworkServer estructuralmente incompatibles entre si. No se
+// resuelve aqui porque requeriria romper el pin de upto o dejar de
+// usar @x402/hedera -- el esquema real y probado de este proyecto es
+// upto, no exact.
+//
 // Flujo implementado: un resource server Express que gatea una ruta
 // detras del esquema "exact" de x402 en Hedera (HBAR o HTS), delegando
 // verify/settle a un facilitador externo. El flujo completo

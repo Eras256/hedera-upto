@@ -23,6 +23,7 @@ Reglas duras del proyecto: ver `AGENTS.md` (importado arriba).
 | `_strategy/MEMORY.md` | Bitacora de decisiones y estado a traves del tiempo (repo local propio, no publicado) |
 | [`tecnico/`](./tecnico/) | Referencia tecnica: SDK, endpoints de red, reglas de marca |
 | [`src/`](./src/) | Codigo del servicio x402-gated (esquemas `exact` y `upto`, UI real) |
+| [`DECISIONS.md`](./DECISIONS.md) | Por que se tomo cada decision de arquitectura real (que esquema, que version, que se excluye del build y por que) |
 
 ## Herramientas propias vs. de terceros
 

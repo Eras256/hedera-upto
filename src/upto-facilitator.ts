@@ -24,6 +24,7 @@ const PORT = Number(process.env.UPTO_FACILITATOR_PORT ?? 3404);
 const NETWORK = process.env.HEDERA_NETWORK ?? "hedera:testnet";
 const FACILITATOR_ACCOUNT_ID = process.env.UPTO_FACILITATOR_ACCOUNT_ID;
 const FACILITATOR_PRIVATE_KEY = process.env.UPTO_FACILITATOR_PRIVATE_KEY;
+const FACILITATOR_EVM = process.env.UPTO_FACILITATOR_EVM;
 const PROXY_CONTRACT_ID = process.env.UPTO_PROXY_CONTRACT_ID ?? "0.0.9556979";
 
 if (!FACILITATOR_ACCOUNT_ID || !FACILITATOR_PRIVATE_KEY) {
@@ -31,6 +32,13 @@ if (!FACILITATOR_ACCOUNT_ID || !FACILITATOR_PRIVATE_KEY) {
     "Falta UPTO_FACILITATOR_ACCOUNT_ID / UPTO_FACILITATOR_PRIVATE_KEY en .env -- " +
       "ver .env.example. Esta cuenta necesita HBAR de testnet para pagar el fee de red " +
       "de cada capture().",
+  );
+}
+if (!FACILITATOR_EVM) {
+  throw new Error(
+    "Falta UPTO_FACILITATOR_EVM en .env -- el alias EVM de la cuenta facilitadora, " +
+      "requerido por UptoHederaScheme para vincular las autorizaciones firmadas. " +
+      "Derivarlo con @hiero-ledger/sdk: PrivateKey.fromStringECDSA(key).publicKey.toEvmAddress().",
   );
 }
 
@@ -43,7 +51,7 @@ const signer = createUptoFacilitatorSigner(
 const scheme = new UptoHederaScheme(signer, {
   proxyContractId: PROXY_CONTRACT_ID,
   chainId: NETWORK === "hedera:mainnet" ? 295 : 296,
-  facilitatorEvm: process.env.UPTO_FACILITATOR_EVM, // see scripts/print-facilitator-evm.ts to derive this
+  facilitatorEvm: FACILITATOR_EVM,
 });
 
 const app = express();

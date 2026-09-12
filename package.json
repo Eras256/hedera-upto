@@ -1,8 +1,13 @@
 {
-  "name": "hedera-x402-service",
+  "name": "hedera-upto",
   "version": "0.0.1",
   "private": true,
-  "description": "x402-gated service on Hedera (exact scheme), scaffold stage",
+  "description": "x402-gated service on Hedera -- exact and upto (metered) schemes, real testnet demo",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eras256/hedera-upto.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
@@ -12,7 +17,8 @@
     "dev:upto-facilitator": "tsx watch src/upto-facilitator.ts",
     "demo:upto-client": "tsx src/upto-client-demo.ts",
     "setup:upto-client": "tsx scripts/setup-upto-client.ts",
-    "dev:upto-ui": "tsx watch src/upto-ui-server.ts"
+    "dev:upto-ui": "tsx watch src/upto-ui-server.ts",
+    "test": "vitest run"
   },
   "dependencies": {
     "@x402/core": "2.21.0",
@@ -24,6 +30,7 @@
     "@types/express": "^4.17.21",
     "@types/node": "^22.0.0",
     "tsx": "^4.19.0",
-    "typescript": "^5.6.0"
+    "typescript": "^5.6.0",
+    "vitest": "^5.0.0"
   }
 }
