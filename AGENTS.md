@@ -95,25 +95,25 @@ Resumen operativo:
   Responder directo sobre lo ya establecido.
 
 **Zero hallucination. Anything date-dependent gets verified live before
-being stated, never from training memory — versions, prices, platform
+being stated, never from training memory: versions, prices, platform
 rules, legal deadlines.** It's fine to say "I don't know, that needs
 verifying." Every claim should trace back to something verifiable; if
 not, mark it as inference.
 
-**Image token cost is area-based, not file-weight-based — crop to the
-relevant region before pasting.** Compressing the file (JPEG/WebP)
+**Image token cost is area-based, not file-weight-based.** Crop to the
+relevant region before pasting. Compressing the file (JPEG/WebP)
 doesn't reduce tokens and can hurt text legibility; cropping dimensions
 does.
 
 **Batch multiple images into the same turn instead of pasting them one
 at a time across separate turns.** Each new image invalidates the
-prompt cache from that point forward — pasting one at a time forces
+prompt cache from that point forward. Pasting one at a time forces
 repeated cache rewrites instead of cheap reads.
 
-**Every PR, issue, or comment published on GitHub — your own repo or
-someone else's — gets written maximally humanized and concise, with the
+**Every PR, issue, or comment published on GitHub, your own repo or
+someone else's, gets written maximally humanized and concise, with the
 AI co-authorship trailer visible, never hidden.** Reporting "found
-something" isn't enough — once the root cause is confirmed with real
+something" isn't enough: once the root cause is confirmed with real
 evidence, propose the fix, not just the finding.
 
 **The Google Drive MCP isn't the default way to read a Doc/Sheet/Slide.**
