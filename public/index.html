@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pago medido en Hedera (esquema upto)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Digest de texto, pagado por palabra</h1>
+      <p class="subtitle">
+        Demo real del esquema <code>upto</code> de x402 en Hedera testnet --
+        no un mock. El precio se autoriza como techo maximo, se descubre
+        haciendo el trabajo, y se cobra el monto exacto.
+      </p>
+    </header>
+
+    <section class="panel">
+      <label for="input-text">Texto a procesar</label>
+      <textarea id="input-text" rows="4" placeholder="Pega o escribe un texto...">the quick brown fox jumps over the lazy dog the dog barks the fox runs away</textarea>
+      <button id="run-button">Pagar y procesar</button>
+    </section>
+
+    <section class="panel" id="trace-panel" hidden>
+      <h2>Flujo real, paso a paso</h2>
+      <ol id="trace-list"></ol>
+    </section>
+
+    <section class="panel" id="result-panel" hidden>
+      <h2>Resultado</h2>
+      <div id="result-body"></div>
+    </section>
+
+    <section class="panel error" id="error-panel" hidden>
+      <h2>Algo fallo</h2>
+      <p id="error-body"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

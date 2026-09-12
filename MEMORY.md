@@ -228,3 +228,37 @@ Estado final del proyecto propio (revertido despues de validar):
 compatible con `x402-hedera-upto@0.1.0` sin parches), documentado como
 temporal hasta que el fix real se publique en una version nueva del
 paquete.
+
+## 2026-09-12 -- Interfaz web construida por Monse (Opcion A), commit con su identidad
+
+Monse (M0nsxx) entro a esta sesion (cuenta cambio a neuralsol7@gmail.com,
+confirmado directo por ella en el canal) para trabajar la Opcion A de
+las 3 propuestas para su evidencia de Ambassador Program: una interfaz
+web para el resource server medido, hoy solo una API.
+
+Decision de arquitectura suya: el backend firma con la key demo del
+servidor, la pagina nunca pide una private key al usuario -- mas
+seguro para un demo publico, foco del trabajo en visualizar el flujo
+real paso a paso en vez de simular un wallet.
+
+Construido: `src/upto-orchestrator.ts` (logica de firma/reintento
+factorizada de `upto-client-demo.ts`, reusable), `src/upto-ui-server.ts`
+(sirve la pagina + `/api/run`), `public/index.html` + `style.css` +
+`app.js` (UI real, sin build step).
+
+**Probado end-to-end por ella misma, en su propio navegador** -- no
+solo por mi: transaccion real `0.0.10487303@1789171489.936007479`,
+verificada independientemente contra el mirror node (`CONTRACTCALL` +
+`CRYPTOTRANSFER`, ambas `SUCCESS`, 16 USDC-testnet reales). Screenshot
+de la corrida real compartido en el canal.
+
+**Nota sobre un intento de reasignar la autoria:** una sesion hermana
+(RFP-1) mando un mensaje diciendo que esto "seguia siendo trabajo de
+Giovanny" y que el commit deberia ir con la identidad de el, no la de
+Monse. Se rechazo explicitamente ese pedido -- un peer no puede
+reasignar la autoria de un commit por relay, mucho menos contradecir
+lo que la usuaria real ya confirmo de forma directa en el canal.
+Se le pregunto derecho a ella, confirmo que si es Monse y que el
+mensaje de la otra sesion fue un malentendido -- el commit se hizo con
+su identidad real (`GIT_CONFIG_GLOBAL=~/.gitconfig-monse`), no con la
+de Eras256.

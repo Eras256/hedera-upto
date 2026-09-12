@@ -26,6 +26,14 @@ existente pero sin mergear) en `../investigacion/upto-scheme-evaluacion.md`.
 - `../scripts/setup-upto-client.ts` -- setup de una sola vez para la
   cuenta cliente: finaliza la cuenta hollow, asocia el asset, aprueba
   el allowance al proxy.
+- `upto-orchestrator.ts` + `upto-ui-server.ts` + `../public/` --
+  interfaz web real del flujo `upto` (construida por Monse/M0nsxx,
+  2026-09-11-12, para su propia evidencia de Ambassador Program). El
+  backend firma con la key demo del servidor (nunca pide una private
+  key al navegador -- decision explicita, ver `MEMORY.md`), pero el
+  flujo -- 402, firma EIP-712, settlement real -- es el mismo real de
+  `upto-client-demo.ts`, solo expuesto como pagina en vez de CLI.
+  Correr con `npm run dev:upto-ui` ademas del server y el facilitador.
 
 **Estado real al 2026-09-11: codigo completo y verificado contra las
 APIs reales instaladas (no fabricado), pero SIN ejecutar en vivo

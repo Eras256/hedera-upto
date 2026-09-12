@@ -11,7 +11,8 @@
     "dev:upto-server": "tsx watch src/upto-server.ts",
     "dev:upto-facilitator": "tsx watch src/upto-facilitator.ts",
     "demo:upto-client": "tsx src/upto-client-demo.ts",
-    "setup:upto-client": "tsx scripts/setup-upto-client.ts"
+    "setup:upto-client": "tsx scripts/setup-upto-client.ts",
+    "dev:upto-ui": "tsx watch src/upto-ui-server.ts"
   },
   "dependencies": {
     "@x402/core": "2.21.0",
