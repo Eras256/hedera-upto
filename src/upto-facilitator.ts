@@ -13,7 +13,7 @@
 // deploying a new proxy -- valid because the proxy is permissionless by
 // design (the authorized facilitator is named in the CLIENT's signature,
 // not in contract storage, so any facilitator account can be used against
-// the same deployed proxy). See investigacion/upto-scheme-evaluacion.md.
+// the same deployed proxy).
 
 import express from "express";
 import { PrivateKey } from "@hiero-ledger/sdk";

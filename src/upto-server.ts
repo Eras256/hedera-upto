@@ -1,7 +1,6 @@
 // Metered x402 resource server on Hedera, using the "upto" scheme
 // (x402-hedera-upto, real npm package v0.1.0) instead of "exact" --
-// see investigacion/upto-scheme-evaluacion.md for why this scheme was
-// chosen as the primary deliverable (2026-09-11 decision).
+// the primary deliverable of this project.
 //
 // Endpoint: POST /api/digest -- charges per unit of INPUT actually
 // processed, not a fixed price. This is a genuine metered workload
@@ -31,7 +30,7 @@ const NETWORK = process.env.HEDERA_NETWORK ?? "hedera:testnet";
 const PAY_TO = process.env.HEDERA_PAYTO_ACCOUNT_ID;
 const ASSET = process.env.UPTO_ASSET_ID ?? "0.0.429274"; // Hedera testnet USDC, per @x402/hedera README
 const ASSET_DECIMALS = Number(process.env.UPTO_ASSET_DECIMALS ?? 6);
-const PROXY_CONTRACT_ID = process.env.UPTO_PROXY_CONTRACT_ID ?? "0.0.9556979"; // Madhav Gupta's live reference deployment, reused -- see investigacion/upto-scheme-evaluacion.md on why this is safe to reuse (permissionless proxy)
+const PROXY_CONTRACT_ID = process.env.UPTO_PROXY_CONTRACT_ID ?? "0.0.9556979"; // Madhav Gupta's live reference deployment, reused -- permissionless proxy, safe to reuse
 const PROXY_EVM_ADDRESS = process.env.UPTO_PROXY_EVM ?? "0x000000000000000000000000000000000091d3f3"; // confirmed against the testnet mirror node for 0.0.9556979
 const FACILITATOR_URL = process.env.UPTO_FACILITATOR_URL ?? "http://localhost:3404";
 const MAX_CEILING_ATOMIC = process.env.UPTO_MAX_CEILING_ATOMIC ?? "500000"; // 0.5 USDC ceiling, atomic units (6 decimals)

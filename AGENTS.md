@@ -7,24 +7,16 @@ su primera linea -- no dupliques reglas ahi.
 
 ## Que es este workspace, en una linea
 
-Hub de investigacion + codigo real para construir en Hedera, hermano de
-`c:\DaAps\RFP 1` (Stellar/SCF), `c:\DaAps\Avalanche` (Kumply/Avalanche),
-`c:\DaAps\Solana` (Prova/Solana) y `c:\DaAps\Base` (Vouch402/Base) en el
-mismo portafolio -- memoria e investigacion propias, sin heredar nada de
-esos proyectos sin re-verificar contra Hedera especificamente. A
-diferencia de Base (que separa estrategia de build en dos repos), aqui
-el codigo vive directamente en este directorio -- no hay repo hermano
-de build.
+Codigo real para construir un servicio x402-gated en Hedera, mas la
+investigacion tecnica necesaria para hacerlo bien -- SDK, endpoints de
+red, esquemas de x402 ya existentes en Hedera, reglas de marca.
 
 ## Por que existe este proyecto
 
-Giovanny (Eras256) ya tiene x402 en produccion en Base (Vouch402) y
-Stellar (Nirium), mas PRs mergeados upstream en `x402-foundation/x402`.
 Hedera contribuyo su propio esquema "exact" de x402 (HBAR + tokens HTS)
-al mismo repo upstream -- ver `investigacion/x402-on-hedera.md`. La
-apuesta es reusar ese expertise ya probado en una chain nueva, con dos
-objetivos en paralelo: (1) aplicar al Hedera Ambassador Program y (2)
-construir un servicio real x402-gated en testnet/mainnet de Hedera.
+al repo upstream de x402. Objetivo: construir un servicio real
+x402-gated en testnet/mainnet de Hedera, reusando ese esquema (o el
+esquema `upto` para pagos medidos por uso, ver `src/README.md`).
 
 ## Constraints duros
 
@@ -32,29 +24,26 @@ construir un servicio real x402-gated en testnet/mainnet de Hedera.
   antes de afirmarlo, nunca desde memoria de entrenamiento** --
   version del SDK, endpoints de red, estado de programas de bounties o
   grants, reglas de trademark. Esta bien decir "no lo se, hay que
-  reverificar." `investigacion/` y `tecnico/` llevan fecha de
-  verificacion explicita por seccion -- no son fuente perpetua.
+  reverificar." `tecnico/` lleva fecha de verificacion explicita por
+  seccion -- no es fuente perpetua.
 - **No fabricar estado de programas de bounties/grants/hackathons.**
   `ai-bounties.hedera.com` cerro su ronda de mayo-junio 2026 (Agent
-  Bounty) y su ronda de x402 (5 ganadores, $1,000 c/u, ver
-  `investigacion/x402-on-hedera.md`); al 2026-09-11 la pagina dice
-  explicitamente "No bounty is open right now" sin fecha confirmada de
-  la siguiente ronda. Nunca citar ese programa como abierto sin
-  reverificar la pagina en vivo el mismo dia.
-- **No asumir nada de Stellar/Base/Avalanche/Solana/x402-Bazaar como si
-  aplicara aqui.** Cada hecho tecnico se re-deriva contra la
-  arquitectura de Hedera (hashgraph consensus, HTS, HCS, Hedera Smart
-  Contract Service/EVM, mirror nodes) -- nunca se traduce mecanicamente
-  desde otro proyecto del portafolio.
-- **Jurisdiccion del operador: inferida Mexico** por consistencia con el
-  resto del portafolio, **no confirmada para este proyecto
-  especificamente todavia.** Cualquier analisis legal/fiscal real debe
-  confirmar la jurisdiccion con el usuario antes de tratarse como
-  aplicable.
+  Bounty) y su ronda de x402 (5 ganadores, $1,000 c/u); al 2026-09-11
+  la pagina dice explicitamente "No bounty is open right now" sin
+  fecha confirmada de la siguiente ronda. Nunca citar ese programa
+  como abierto sin reverificar la pagina en vivo el mismo dia.
+- **No asumir nada de otra red/chain como si aplicara aqui, aunque se
+  haya visto un patron similar en otro lado.** Cada hecho tecnico se
+  re-deriva contra la arquitectura de Hedera (hashgraph consensus, HTS,
+  HCS, Hedera Smart Contract Service/EVM, mirror nodes) -- nunca se
+  asume por analogia.
+- **Jurisdiccion del operador: inferida Mexico, no confirmada para este
+  proyecto especificamente todavia.** Cualquier analisis legal/fiscal
+  real debe confirmar la jurisdiccion con el usuario antes de tratarse
+  como aplicable.
 - **Nunca "SDK" ni "Developer" en el nombre/titulo publico del
   proyecto** si en algun momento esto aplica a un programa de grants
-  con categorias -- mismo error que ya costo un proyecto hermano en
-  prescreen de otro ecosistema.
+  con categorias -- puede sacar un proyecto de prescreen.
 - **Nunca afirmar un commit/merge/estado de PR sin verificarlo contra la
   API real primero** -- no basta con "reportar", hay que confirmar
   (`gh api`, no memoria ni suposicion).

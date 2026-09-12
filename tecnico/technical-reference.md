@@ -39,11 +39,9 @@ rompe los chequeos `instanceof` internos del SDK con un error
 
 ## x402 en Hedera
 
-Ver detalle completo en
-[`../investigacion/x402-on-hedera.md`](../investigacion/x402-on-hedera.md)
-y la especificacion real leida del repo local
-[`../../x402/specs/schemes/exact/scheme_exact_hedera.md`](../../x402/specs/schemes/exact/scheme_exact_hedera.md).
-Resumen: paquete `@x402/hedera` (v2.25.0, actualizado 2026-09-04),
+Especificacion real: `specs/schemes/exact/scheme_exact_hedera.md` en
+`x402-foundation/x402` (GitHub). Resumen: paquete `@x402/hedera`
+(v2.25.0, actualizado 2026-09-04),
 esquema "exact", facilitador de referencia Blocky402. El paquete se
 apoya en `@x402/core` para las piezas generales de x402 (cliente,
 resource server, facilitator) y expone entrypoints separados

@@ -3,8 +3,7 @@
 // not a mock of the flow, it's a browser window onto the same flow
 // src/upto-client-demo.ts already proves works.
 //
-// Built by Monse (M0nsxx) for her own Hedera Ambassador Program
-// evidence -- see MEMORY.md for context.
+// Built by Monse (M0nsxx).
 
 import express from "express";
 import path from "node:path";

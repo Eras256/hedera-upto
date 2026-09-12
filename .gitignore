@@ -5,3 +5,8 @@ dist/
 *.log
 .DS_Store
 Thumbs.db
+
+# Bitacora de decisiones de uso local -- no se publica (puede contener
+# contexto operativo interno). Sigue existiendo en disco, solo no se
+# trackea en este repo.
+MEMORY.md

@@ -1,6 +1,5 @@
-// Scaffold inicial -- NO es el producto final. Ver MEMORY.md y
-// investigacion/x402-on-hedera.md para el estado y las decisiones
-// pendientes (que servicio concreto se cobra).
+// Scaffold inicial -- NO es el producto final. Ver MEMORY.md para el
+// estado y las decisiones pendientes (que servicio concreto se cobra).
 //
 // Flujo implementado: un resource server Express que gatea una ruta
 // detras del esquema "exact" de x402 en Hedera (HBAR o HTS), delegando
@@ -56,7 +55,7 @@ app.use(express.json());
 // TODO: la ruta real de negocio va aqui, envuelta por el middleware de
 // x402 que produce el 402 + PaymentRequirements cuando falta pago, y
 // deja pasar la request cuando el pago ya fue verificado/asentado.
-// Pendiente decidir que se cobra (ver investigacion/README.md).
+// Pendiente decidir que se cobra.
 app.get("/health", (_req, res) => {
   res.json({ ok: true, network: NETWORK, payTo: PAYTO });
 });
