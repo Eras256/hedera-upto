@@ -50,6 +50,14 @@ esquema `upto` para pagos medidos por uso, ver `src/README.md`).
 - **Toda prueba de que algo funciona lleva evidencia clickeable real**
   (tx hash, link a HashScan/mirror node, comentario de un maintainer)
   -- nunca un puntaje de auditoria autoemitido.
+- **Despues de correr cualquier instalador/CLI de terceros que escriba
+  archivos en la raiz del repo (skills, plugins, generadores), correr
+  `git status` y revisar cada carpeta/archivo nuevo antes del proximo
+  commit** -- no basta con que el instalador reporte "complete".
+  Confirmado en vivo: `npx skills add` escribio `.agents/`, `agent/` y
+  `skills-lock.json` sin que nada los cubriera en `.gitignore`, y por
+  nombre sobreescribio dos skills locales existentes sin avisar mas
+  que en su propio log.
 
 ## Reglas de marca (Hedera)
 
