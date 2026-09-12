@@ -9,7 +9,8 @@
   sesion.
 - **`CLAUDE.md`** -- el resumen ejecutivo del proyecto, importa
   `AGENTS.md` arriba.
-- **`MEMORY.md`** -- el diario de decisiones: que se decidio, cuando, y
-  por que (uso local, no se publica).
+- **`_strategy/`** -- carpeta de estrategia (investigacion, legal,
+  bitacora de decisiones): su propio repo git local, independiente de
+  este, no se publica.
 
 Si esto es tu primera vez aqui, lee `CLAUDE.md` primero.

@@ -20,7 +20,7 @@ Reglas duras del proyecto: ver `AGENTS.md` (importado arriba).
 | --- | --- |
 | [`AGENTS.md`](./AGENTS.md) | Reglas duras, importadas arriba con `@AGENTS.md` |
 | [`README.md`](./README.md) | Mapa de la estructura en palabras simples |
-| [`MEMORY.md`](./MEMORY.md) | Bitacora de decisiones y estado a traves del tiempo (uso local, no publicado) |
+| `_strategy/MEMORY.md` | Bitacora de decisiones y estado a traves del tiempo (repo local propio, no publicado) |
 | [`tecnico/`](./tecnico/) | Referencia tecnica: SDK, endpoints de red, reglas de marca |
 | [`src/`](./src/) | Codigo del servicio x402-gated (esquemas `exact` y `upto`, UI real) |
 

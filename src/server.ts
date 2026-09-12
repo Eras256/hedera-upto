@@ -1,4 +1,4 @@
-// Scaffold inicial -- NO es el producto final. Ver MEMORY.md para el
+// Scaffold inicial -- NO es el producto final. Falta decidir el
 // estado y las decisiones pendientes (que servicio concreto se cobra).
 //
 // Flujo implementado: un resource server Express que gatea una ruta

@@ -36,10 +36,9 @@ async function main() {
   // x402-hedera-upto@0.1.0 (the only version published) is incompatible
   // with @x402/core >=2.22.0 (missing `paymentFlows`/
   // `defaultAssetTransferMethod`, required since that version). Fix
-  // proposed and verified upstream -- see MEMORY.md and the linked PR
-  // against Madhav-Gupta-28/Tally. At 2.21.0 there is no spendControls
-  // feature yet (added in 2.23.0), so no setSpendControls(false) call
-  // is needed or available.
+  // proposed and verified upstream against Madhav-Gupta-28/Tally. At
+  // 2.21.0 there is no spendControls feature yet (added in 2.23.0), so
+  // no setSpendControls(false) call is needed or available.
   const client = new x402Client().register("hedera:*", new UptoHederaScheme(signer));
   const http = new x402HTTPClient(client);
 

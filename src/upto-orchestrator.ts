@@ -6,8 +6,8 @@
 // upto-server + upto-facilitator, and produces a real Hedera testnet
 // settlement.
 //
-// The private key stays server-side always -- see MEMORY.md /
-// src/README.md for why the UI never asks the browser for one.
+// The private key stays server-side always -- see src/README.md for
+// why the UI never asks the browser for one.
 
 import { x402Client } from "@x402/core/client";
 import { x402HTTPClient, encodePaymentSignatureHeader } from "@x402/core/http";

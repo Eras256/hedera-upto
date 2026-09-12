@@ -6,17 +6,12 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Bitacora de decisiones de uso local -- no se publica (puede contener
-# contexto operativo interno). Sigue existiendo en disco, solo no se
-# trackea en este repo.
-MEMORY.md
+# Carpeta de estrategia (investigacion interna, legal, bitacora de
+# decisiones, playbooks de uso local) -- es su propio repo git
+# independiente (ver _strategy/README.md), nunca se trackea desde el
+# repo publico de codigo. Existe en disco, no se publica aqui.
+_strategy/
 
-# Investigacion interna y notas legales -- utiles localmente, pero
-# mencionan contexto de portafolio/estrategia que no va a un repo
-# publico. Igual que MEMORY.md: existen en disco, nunca se trackean.
-investigacion/
-legal/
-
-# Configuracion/playbooks de uso local -- siguen igual que arriba.
-playbooks/
+# Config/skills de Claude Code para este proyecto -- de uso local,
+# nunca se trackea en el repo publico.
 .claude/
