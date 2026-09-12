@@ -5,12 +5,6 @@
   escribe "Hedera" y "HBAR" sin meterte en problemas de marca.
 - **`src/`** -- el codigo real: un servicio que cobra por x402 en
   Hedera, con dos esquemas (`exact` y `upto`) y una interfaz web real.
-- **`playbooks/`** -- reglas de trabajo reusables (como retomar sesion,
-  como pegar imagenes barato, como escribir PRs/issues, cuando usar el
-  MCP de Google Drive) -- cada una resumida en dos lineas dentro de
-  `AGENTS.md` y detallada aqui.
-- **`.claude/`** -- la config de Claude Code para este proyecto: un
-  skill (`claude-antigravity-setup`) y un comando (`/session-close`).
 - **`AGENTS.md`** -- las reglas que no se rompen nunca, en cualquier
   sesion.
 - **`CLAUDE.md`** -- el resumen ejecutivo del proyecto, importa

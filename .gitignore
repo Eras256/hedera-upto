@@ -16,3 +16,7 @@ MEMORY.md
 # publico. Igual que MEMORY.md: existen en disco, nunca se trackean.
 investigacion/
 legal/
+
+# Configuracion/playbooks de uso local -- siguen igual que arriba.
+playbooks/
+.claude/
