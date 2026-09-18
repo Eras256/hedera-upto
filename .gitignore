@@ -12,9 +12,14 @@ Thumbs.db
 # repo publico de codigo. Existe en disco, no se publica aqui.
 _strategy/
 
-# Config/skills de Claude Code para este proyecto -- de uso local,
-# nunca se trackea en el repo publico.
-.claude/
+# Config de Claude Code para este proyecto -- de uso local, nunca se
+# trackea en el repo publico. .claude/skills/ es la excepcion: es la
+# ruta real donde Claude Code descubre skills, ya se audito completa
+# (33 skills, 18-sep-2026, limpia de referencias a otros proyectos) y
+# esconderla completa rompe el auto-descubrimiento en cualquier clon
+# nuevo sin ningun beneficio de seguridad real a cambio.
+.claude/*
+!.claude/skills/
 
 # Skills de terceros instalados via `npx skills` (hedera-dev/hedera-skills)
 # -- corren con permisos completos de agente, algunos con riesgo Med/High
