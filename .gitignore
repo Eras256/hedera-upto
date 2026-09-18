@@ -15,3 +15,11 @@ _strategy/
 # Config/skills de Claude Code para este proyecto -- de uso local,
 # nunca se trackea en el repo publico.
 .claude/
+
+# Skills de terceros instalados via `npx skills` (hedera-dev/hedera-skills)
+# -- corren con permisos completos de agente, algunos con riesgo Med/High
+# segun Snyk (ver skills.sh/hedera-dev/hedera-skills). Uso local, no se
+# versionan en el repo.
+.agents/
+agent/
+skills-lock.json
