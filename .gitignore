@@ -12,19 +12,18 @@ Thumbs.db
 # repo publico de codigo. Existe en disco, no se publica aqui.
 _strategy/
 
-# Config de Claude Code para este proyecto -- de uso local, nunca se
-# trackea en el repo publico. .claude/skills/ es la excepcion: es la
-# ruta real donde Claude Code descubre skills, ya se audito completa
-# (33 skills, 18-sep-2026, limpia de referencias a otros proyectos) y
-# esconderla completa rompe el auto-descubrimiento en cualquier clon
-# nuevo sin ningun beneficio de seguridad real a cambio.
-.claude/*
-!.claude/skills/
+# Config/skills de Claude Code para este proyecto. .claude/skills/ SI
+# se trackea a proposito -- es la ruta real donde Claude Code descubre
+# skills, y esconderla completa rompe el auto-descubrimiento en
+# cualquier clon nuevo de este repo. Auditado 2026-09-18: cada
+# SKILL.md publico paso el chequeo de contenido (no nombra proyectos
+# hermanos ni revela coordinacion de portafolio). Solo config
+# genuinamente local/de maquina se ignora:
+.claude/settings.local.json
 
-# Skills de terceros instalados via `npx skills` (hedera-dev/hedera-skills)
-# -- corren con permisos completos de agente, algunos con riesgo Med/High
-# segun Snyk (ver skills.sh/hedera-dev/hedera-skills). Uso local, no se
-# versionan en el repo.
+# Skills instaladas via `npx skills add` (marketplace hedera-dev/
+# hedera-skills) -- config de agentes local, mismo criterio que
+# .claude/, nunca se trackea en el repo publico.
 .agents/
 agent/
 skills-lock.json

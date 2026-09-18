@@ -24,7 +24,21 @@ description: >
   `.claude/skills/<name>` to `.agents/skills/<name>` *inside a repo*
   breaks the moment that repo is cloned somewhere `.agents/` doesn't
   exist. Treat any such symlink found during a sweep as a finding to fix
-  immediately, no exception clause needed.
+  immediately, no exception clause needed. **Real example already on
+  record in this repo:** `hedera-token-service` and
+  `hedera-consensus-service` under `.claude/skills/` became symlinks to
+  `.agents/skills/...` after `npx skills add hedera-dev/hedera-skills
+  --all` overwrote them by name on 2026-09-12 (see the
+  `hedera-dev-skills-marketplace` memory). That was evaluated as an
+  acceptable loss at the time because the official content covers the
+  same mechanical ground and nothing project-specific was lost without a
+  home elsewhere. Confirmed fixed 2026-09-18: all 24 skills that landed
+  as symlinks from that install (not just these two) were converted back
+  to real tracked copies in the same sweep that first found this
+  project's own `.gitignore` also excluding `.claude/` wholesale -- a
+  live instance of Step 5 below (over-exclusion hiding real `SKILL.md`
+  files from a fresh clone) caught in the same pass as this symlink
+  check.
   **The one genuinely different case, not covered by the rule above:**
   a *global*, non-repo directory in the user's own machine profile
   (`~/.claude/skills/<name>` → `~/.agents/skills/<name>`), managed by a
@@ -46,16 +60,20 @@ description: >
 - **A .gitignore can fail in either direction** — too narrow (leaks a
   secret) or too broad (silently excludes real files, like `SKILL.md`,
   from ever being tracked, so they vanish on a fresh clone). Check both.
-- **A mirror/showroom-specific gitignore is its own file, with its own
-  typo risk — check it against the real folder name, don't assume it
-  matches the main `.gitignore`.** Real case: a project's
-  `.gitignore.showroom` (the file that becomes the public mirror's
-  `.gitignore` during sync) had `.agent/` (singular) where the real
-  folder is `.agents/` (plural) — a defense-in-depth layer silently
-  broken, never exploited only because the sync script itself also
-  never copied that folder. Diff every mirror-specific ignore file
-  against the actual folder names in the repo (`ls -d .*/` compared
-  line-by-line), don't just skim it.
+- **A secondary/derived gitignore file (a mirror-sync variant, a
+  template used to generate the real one) is its own file, with its own
+  typo risk -- check it against the real folder names, don't assume it
+  matches the main `.gitignore`.** This repo doesn't run a mirror-sync
+  setup today, but the same failure mode already happened here in a
+  simpler form: `npx skills add hedera-dev/hedera-skills --all` wrote
+  `.agents/`, `agent/`, and `skills-lock.json` at the repo root, none of
+  it covered by `.gitignore` at the time -- confirmed live 2026-09-12,
+  fixed in commit `c008b82` (see the `hedera-dev-skills-marketplace`
+  memory and the AGENTS.md rule it produced: run `git status` and review
+  every new path after any third-party installer, before the next
+  commit). If this project ever adds a mirror/showroom-style sync file,
+  diff it against the actual folder names in the repo (`ls -d .*/`
+  compared line-by-line), don't just skim it.
 
 ## Step 1 — Email exposure across every repo
 

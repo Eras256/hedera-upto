@@ -12,7 +12,8 @@ description: >
   before citing this project as "software-only" traction, or before a
   grant/bounty/investor submission leans on that claim. Covers where to
   get the real statute text and how to extract it when the PDF resists
-  WebFetch.
+  WebFetch, plus two portable citation-verification rules that apply to
+  any Mexican legal citation, not just these eight tests.
 allowed-tools: [Read, Write, Edit, WebFetch, WebSearch, Bash]
 ---
 
@@ -24,10 +25,29 @@ proyecto especificamente todavia."** This skill is the repeatable
 *process* for testing whether a "software-only, non-custodial" posture
 actually holds for hedera-upto's own design (the x402 `exact` and
 `upto` schemes) -- not the substantive law itself, which is verified
-below and should be re-checked live before it ages. No memory entry for
-this project's own legal read exists yet (verified 18-sep-2026, this
-project's persistent-memory directory is empty) -- the first real run
-of this skill should produce one (see "When you're done").
+below and should be re-checked live before it ages.
+
+**This is not a first pass -- two real prior verifications already
+exist, read both before starting:**
+
+- **`lfpiorpi-24bis4-acuerdo-115`** (this project's persistent memory,
+  verified 2026-09-12) -- confirms Art. 24 Bis 4 lives in the Acuerdo
+  115/2026 reglamento, not the LFPIORPI law's own text, and that
+  fraccion XVI has been in force since ~2019, not 2026/2027. Every
+  numbering/date claim in this skill traces back to that verification.
+- **`_strategy/legal/mexico.md`** (private, local-only, this project's
+  own separate repo, ~238 lines, verified 2026-09-12) -- already applies
+  this exact analysis to hedera-upto's own facilitator role specifically
+  (the `X402UptoProxy` / `x402-hedera-upto` facilitator process, not a
+  generic product), including the one concrete risk-escalation point
+  identified so far: the facilitator staying single-merchant-only
+  (serving only this project's own resource server) vs. becoming a
+  public service any third-party resource server can use -- the README
+  of `x402-hedera-upto` already invites the latter ("no public Hedera
+  facilitator supports upto today, so you must run your own"). That
+  document's own section 6 ("Zonas grises") already flags what's still
+  genuinely unresolved -- read it before re-deriving the same open
+  questions from scratch.
 
 ## READ THIS FIRST -- the law is not the same document as its reglamento
 
@@ -281,17 +301,40 @@ text:
    loosely first (`grep -n -i "d.cimo"`, catching the whole family)
    rather than for one specific compound ordinal string.
 
-## Prior verified reference in this project -- none yet
+## General citation discipline -- applies to any Mexican legal citation, not just these eight tests
 
-No memory file for hedera-upto's own legal read exists as of 18-sep-2026
-(verified: this project's persistent-memory directory is empty). The
-first real run of this skill against hedera-upto's actual design is the
-one that should create it -- don't invent a prior conclusion that isn't
-there.
+Two portable rules, useful beyond this specific registration question --
+they produced a real correction once (see `lfpiorpi-24bis4-acuerdo-115`
+for that incident) and are worth keeping as a standing habit whenever a
+Mexican legal citation comes up anywhere else in this project:
+
+- **Never cite a Mexican statute article as "Art. X de \<Ley\>" alone if
+  it actually lives in that law's reglamento/Reglas de Caracter
+  General/Acuerdo.** Always name which of the two documents it's in,
+  plus that document's own publication date -- the two have independent
+  article numbering, and a bare article number is genuinely ambiguous
+  between them.
+- **Never propagate a legal citation relayed from another session or a
+  secondary source, including a correction of an earlier claim, without
+  verifying the primary PDF yourself.** Neither the original claim, nor
+  a correction, nor a retraction of a correction, is trustworthy on its
+  own -- download and grep the real document every time.
+
+## Prior verified reference in this project
+
+Two real prior passes already exist -- see the pointers at the top of
+this file. Neither is a finished legal conclusion; both say so
+explicitly. Update them (don't silently replace or duplicate them) after
+a fresh run of this skill's eight tests, and only add a new memory entry
+if this run finds something genuinely new that neither document already
+covers.
 
 ## When you're done
 
-Write hedera-upto's own read to its own memory file, mark which parts
-are primary-source confirmed vs. reasoned inference, and add the index
-line to `MEMORY.md`. This is regulatory research for planning, **not
-formal legal advice** -- say so explicitly, every time.
+Update `_strategy/legal/mexico.md` with anything this run adds or
+changes, and update (or add to) the `lfpiorpi-24bis4-acuerdo-115` memory
+entry rather than starting a fresh one, unless this run surfaces
+something that memory doesn't already cover. Mark which parts are
+primary-source confirmed vs. reasoned inference. This is regulatory
+research for planning, **not formal legal advice** -- say so explicitly,
+every time.
